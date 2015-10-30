@@ -10,7 +10,7 @@ To compile this plugin, you need:
 
 * CMake
 
-* VampirTrace or Score-P
+* Score-P (or VampirTrace)
 
 * A recent Linux kernel (`2.6.31+`) with activated tracing and the kernel headers
 
@@ -23,11 +23,15 @@ To compile this plugin, you need:
 
 2. Invoke CMake
 
-    Specify the VampirTrace and/or Score-P directory if it is not in the default path with
-    `-DVT_INC=<PATH>` respectivly `-DSCOREP_DIR=<PATH>`. The plugin will use alternatively the
-    environment variables `VT_DIR` and `SCOREP_DIR`, e.g.
+    Specify the Score-P (and/or VampirTrace) directory if it is not in the default path with
+    `-DSCOREP_DIR=<PATH>` (respectivly `-DVT_INC=<PATH>`). The plugin will use alternatively the
+    environment variables `SCOREP_DIR` (and `VT_DIR`), e.g.
 
-        cmake .. -DVT_DIR=/opt/vampirtrace -DSCOREP_DIR=/opt/scorep
+        cmake .. -DSCOREP_DIR=/opt/scorep
+
+    or (for VampirTrace)
+
+        cmake .. -DVT_DIR=/opt/vampirtrace
 
 3. Invoke make
 
@@ -39,11 +43,23 @@ To compile this plugin, you need:
 
 ##Usage
 
-To add a kernel event counter to your trace, you have to specify the environment variable
-`VT_PLUGIN_CNTR_METRIC` respectivly `SCOREP_METRIC_PLUGINS`.
+###Score-P
 
-`VT_PLUGIN_CNTR_METRIC`/`SCOREP_METRIC_PLUGINS` specifies the software events that shall be recorded
-when tracing an application. You can add the following metrics:
+To use this plugin you have to add it to the `SCOREP_METRIC_PLUGINS` variable, e.g.:
+
+    export SCOREP_METRIC_PLUGINS="PerfScoreP"
+
+Afterwards you can select the metrics you want to measure from the list of the available metrics.
+
+###VampirTrace
+
+To add a kernel event counter to your trace, you have to specify the environment variable
+`VT_PLUGIN_CNTR_METRIC`.
+
+`VT_PLUGIN_CNTR_METRIC` specifies the software events that shall be recorded when tracing an
+application. You can add the metrics from the list of the available metrics.
+
+###Available metrics
 
 | Name                                               | Type                          |
 | -------------------------------------------------- | ----------------------------- |
@@ -99,14 +115,13 @@ when tracing an application. You can add the following metrics:
 | node-prefetch-misses                               | Hardware cache event          |
 | rNNN (see `perf list --help` on how to encode it)  | Raw hardware event descriptor |
 
+E.g. for the Score-P plugin:
 
-E.g. VampirTrace plugin:
+    export SCOREP_METRIC_PERFSCOREP_PLUGIN="instructions:L1-dcache-loads"
+
+or for the VampirTrace plugin:
 
     export VT_PLUGIN_CNTR_METRICS="PerfVT_instructions:PerfVT_L1-dcache-loads"
-
-E.g. Score-P plugin:
-
-    export SCOREP_METRIC_PLUGINS="PerfScore-P_instructions:PerfScore-P_L1-dcache-loads"
 
 ###If anything fails
 
