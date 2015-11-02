@@ -49,7 +49,10 @@ To use this plugin you have to add it to the `SCOREP_METRIC_PLUGINS` variable, e
 
     export SCOREP_METRIC_PLUGINS="PerfScoreP"
 
-Afterwards you can select the metrics you want to measure from the list of the available metrics.
+Afterwards you can select the metrics you want to measure from the list of the available metrics using 
+    export SCOREP_METRIC_PERFSCOREP_PLUGIN="<metric name>"
+
+See below for a list of available metrics.
 
 ###VampirTrace
 
@@ -122,6 +125,10 @@ E.g. for the Score-P plugin:
 or for the VampirTrace plugin:
 
     export VT_PLUGIN_CNTR_METRICS="PerfVT_instructions:PerfVT_L1-dcache-loads"
+
+To get the full list of available perf counters, please use:
+
+    perf list
 
 ###If anything fails
 
