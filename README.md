@@ -134,10 +134,8 @@ To get the full list of available perf counters, please use:
 
 1. Check whether the plugin library can be loaded from the `LD_LIBRARY_PATH`.
 
-2. It may be, that your kernel headers do not provide the file `include/linux/perf_events.h`.
-    If thats the case for your system, you should check whether there is the file
-    `include/linux/perf_counter.h` and include this file instead. You should also rename the type of
-    the variable `attr` in the function `add_event()` to `perf_counter_attr`.
+2. If your kernel headers do not provide the file `include/linux/perf_events.h` please make sure you are using at least Linux 2.6.31.
+   
 
 3. Write a mail to the author.
 
