@@ -1,4 +1,4 @@
-#VampirTrace/Score-P perf Plugin Counter
+#Score-P/VampirTrace perf Plugin Counter
 
 ##Compilation and Installation
 
@@ -47,10 +47,12 @@ To compile this plugin, you need:
 
 To use this plugin you have to add it to the `SCOREP_METRIC_PLUGINS` variable, e.g.:
 
-    export SCOREP_METRIC_PLUGINS="PerfScoreP"
+    export SCOREP_METRIC_PLUGINS="perf_plugin"
 
-Afterwards you can select the metrics you want to measure from the list of the available metrics using 
-    export SCOREP_METRIC_PERFSCOREP_PLUGIN="<metric name>"
+Afterwards you can select the metrics you want to measure from the list of the available metrics
+using
+
+    export SCOREP_METRIC_PERF_PLUGIN="<metric name>"
 
 See below for a list of available metrics.
 
@@ -120,11 +122,11 @@ application. You can add the metrics from the list of the available metrics.
 
 E.g. for the Score-P plugin:
 
-    export SCOREP_METRIC_PERFSCOREP_PLUGIN="instructions:L1-dcache-loads"
+    export SCOREP_METRIC_PERF_PLUGIN="instructions:L1-dcache-loads"
 
 or for the VampirTrace plugin:
 
-    export VT_PLUGIN_CNTR_METRICS="PerfVT_instructions:PerfVT_L1-dcache-loads"
+    export VT_PLUGIN_CNTR_METRICS="perf_plugin_instructions:perf_plugin_L1-dcache-loads"
 
 To get the full list of available perf counters, please use:
 
@@ -134,8 +136,8 @@ To get the full list of available perf counters, please use:
 
 1. Check whether the plugin library can be loaded from the `LD_LIBRARY_PATH`.
 
-2. If your kernel headers do not provide the file `include/linux/perf_events.h` please make sure you are using at least Linux 2.6.31.
-   
+2. If your kernel headers do not provide the file `include/linux/perf_events.h` please make sure you
+    are using at least Linux `2.6.31`.
 
 3. Write a mail to the author.
 
