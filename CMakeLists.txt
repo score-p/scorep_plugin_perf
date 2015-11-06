@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(PERF_PLUGIN)
+project(perf_plugin)
 
 option(BACKEND_SCOREP "Build plugin using scorep(ON) or vampirtrace(OFF)" ON)
 
@@ -52,7 +52,7 @@ set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DHAVE_DEBUG -O0 -Wstrict-protot
 #release c flags
 set(CMAKE_C_FLAGS_RELEASE "-Os")
 
-add_library(perf_plugin SHARED ${PLUGIN_SOURCE})
-target_link_libraries(perf_plugin pthread m)
+add_library(${PROJECT_NAME} SHARED ${PLUGIN_SOURCE})
+target_link_libraries(${PROJECT_NAME} pthread m)
 
-install(TARGETS perf_plugin LIBRARY DESTINATION lib)
+install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
