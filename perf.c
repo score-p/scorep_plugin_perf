@@ -327,7 +327,7 @@ bool get_optional_value( int32_t   id,
 /**
  * This function get called to give some informations about the plugin to scorep
  */
-SCOREP_METRIC_PLUGIN_ENTRY( PerfScoreP )
+SCOREP_METRIC_PLUGIN_ENTRY( perf_plugin )
 {
     /* Initialize info data (with zero) */
     SCOREP_Metric_Plugin_Info info;
