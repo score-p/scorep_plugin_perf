@@ -1,8 +1,8 @@
-#Score-P/VampirTrace perf Plugin Counter
+# Score-P/VampirTrace perf Plugin Counter
 
-##Compilation and Installation
+## Compilation and Installation
 
-###Prerequisites
+### Prerequisites
 
 To compile this plugin, you need:
 
@@ -14,7 +14,7 @@ To compile this plugin, you need:
 
 * A recent Linux kernel (`2.6.31+`) with activated tracing and the kernel headers
 
-###Building
+### Building
 
 1. Create a build directory
 
@@ -41,9 +41,9 @@ To compile this plugin, you need:
 
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
 
-##Usage
+## Usage
 
-###Score-P
+### Score-P
 
 To use this plugin you have to add it to the `SCOREP_METRIC_PLUGINS` variable, e.g.:
 
@@ -56,7 +56,7 @@ using
 
 See below for a list of available metrics.
 
-###VampirTrace
+### VampirTrace
 
 To add a kernel event counter to your trace, you have to specify the environment variable
 `VT_PLUGIN_CNTR_METRIC`.
@@ -64,7 +64,7 @@ To add a kernel event counter to your trace, you have to specify the environment
 `VT_PLUGIN_CNTR_METRIC` specifies the software events that shall be recorded when tracing an
 application. You can add the metrics from the list of the available metrics.
 
-###Available metrics
+### Available metrics
 
 | Name                                               | Type                          |
 | -------------------------------------------------- | ----------------------------- |
@@ -132,7 +132,7 @@ To get the full list of available perf counters, please use:
 
     perf list
 
-###If anything fails
+### If anything fails
 
 1. Check whether the plugin library can be loaded from the `LD_LIBRARY_PATH`.
 
@@ -141,6 +141,6 @@ To get the full list of available perf counters, please use:
 
 3. Write a mail to the author.
 
-##Authors
+## Authors
 
 * Robert Schoene (robert.schoene at tu-dresden dot de)
